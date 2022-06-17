@@ -18,9 +18,18 @@ public class UserDaoService {
         return usersList;
     }
 
-    public void addUser(User user){
+    public User addUser(User user){
         user.setId(++this.userCount);
         usersList.add(user);
+        return usersList.get(userCount -1);
+    }
+
+    public User getUserById(int id){
+        for(User user : usersList){
+            if(user.getId() == id)
+                return user;
+        }
+        return null;
     }
 
 }
